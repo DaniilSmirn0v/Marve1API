@@ -11,6 +11,8 @@
 		A575FBE228943A52006245F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A575FBE128943A52006245F5 /* Assets.xcassets */; };
 		A575FBE528943A52006245F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A575FBE328943A52006245F5 /* LaunchScreen.storyboard */; };
 		A575FBF428943DF1006245F5 /* CharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FBF328943DF1006245F5 /* CharactersViewController.swift */; };
+		A575FBFA289458F1006245F5 /* CharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FBF9289458F1006245F5 /* CharactersView.swift */; };
+		A575FBFC28946020006245F5 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FBFB28946020006245F5 /* CustomCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		A575FBE428943A52006245F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A575FBE628943A52006245F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A575FBF328943DF1006245F5 /* CharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewController.swift; sourceTree = "<group>"; };
+		A575FBF9289458F1006245F5 /* CharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersView.swift; sourceTree = "<group>"; };
+		A575FBFB28946020006245F5 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,17 +108,84 @@
 		A575FBF128943BFA006245F5 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				A575FBF228943DB3006245F5 /* CharactersViewController */,
+				A575FBF228943DB3006245F5 /* CharactersModule */,
+				A575FBFD28947294006245F5 /* DetailCharacterModule */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
 		};
-		A575FBF228943DB3006245F5 /* CharactersViewController */ = {
+		A575FBF228943DB3006245F5 /* CharactersModule */ = {
+			isa = PBXGroup;
+			children = (
+				A575FBF6289456F9006245F5 /* Presenter */,
+				A575FBF5289456E7006245F5 /* Controller */,
+				A575FBF728945790006245F5 /* Views */,
+			);
+			name = CharactersModule;
+			sourceTree = "<group>";
+		};
+		A575FBF5289456E7006245F5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				A575FBF328943DF1006245F5 /* CharactersViewController.swift */,
 			);
-			name = CharactersViewController;
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		A575FBF6289456F9006245F5 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A575FBF728945790006245F5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A575FBF82894579C006245F5 /* Cell */,
+				A575FBF9289458F1006245F5 /* CharactersView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A575FBF82894579C006245F5 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A575FBFB28946020006245F5 /* CustomCollectionViewCell.swift */,
+			);
+			name = Cell;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		A575FBFD28947294006245F5 /* DetailCharacterModule */ = {
+			isa = PBXGroup;
+			children = (
+				A575FBFF2894752E006245F5 /* Presenter */,
+				A575FC0028947535006245F5 /* Controller */,
+				A575FBFE28947529006245F5 /* Views */,
+			);
+			path = DetailCharacterModule;
+			sourceTree = "<group>";
+		};
+		A575FBFE28947529006245F5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		A575FBFF2894752E006245F5 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A575FC0028947535006245F5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,6 +260,8 @@
 			files = (
 				A575FBF428943DF1006245F5 /* CharactersViewController.swift in Sources */,
 				A575FBD928943A50006245F5 /* AppDelegate.swift in Sources */,
+				A575FBFA289458F1006245F5 /* CharactersView.swift in Sources */,
+				A575FBFC28946020006245F5 /* CustomCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
