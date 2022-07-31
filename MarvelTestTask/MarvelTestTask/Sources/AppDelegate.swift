@@ -16,7 +16,7 @@ var window: UIWindow?
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        let rootViewController = CharactersViewController()
+        let rootViewController = DetailCharacterViewController()
         
         let navigaionViewController = UINavigationController(rootViewController: rootViewController)
         navigaionViewController.navigationBar.isTranslucent = true

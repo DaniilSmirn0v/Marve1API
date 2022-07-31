@@ -13,6 +13,11 @@
 		A575FBF428943DF1006245F5 /* CharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FBF328943DF1006245F5 /* CharactersViewController.swift */; };
 		A575FBFA289458F1006245F5 /* CharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FBF9289458F1006245F5 /* CharactersView.swift */; };
 		A575FBFC28946020006245F5 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FBFB28946020006245F5 /* CustomCollectionViewCell.swift */; };
+		A575FC02289475F4006245F5 /* DetailCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC01289475F4006245F5 /* DetailCharacterViewController.swift */; };
+		A575FC042894762C006245F5 /* DetailCharacterHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC032894762C006245F5 /* DetailCharacterHeaderView.swift */; };
+		A575FC0628947792006245F5 /* ContentCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC0528947792006245F5 /* ContentCollectionCell.swift */; };
+		A575FC08289477AD006245F5 /* ContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC07289477AD006245F5 /* ContentTableViewCell.swift */; };
+		A575FC0A2894885D006245F5 /* DetailCharacterTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC092894885D006245F5 /* DetailCharacterTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		A575FBF328943DF1006245F5 /* CharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewController.swift; sourceTree = "<group>"; };
 		A575FBF9289458F1006245F5 /* CharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersView.swift; sourceTree = "<group>"; };
 		A575FBFB28946020006245F5 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		A575FC01289475F4006245F5 /* DetailCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCharacterViewController.swift; sourceTree = "<group>"; };
+		A575FC032894762C006245F5 /* DetailCharacterHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCharacterHeaderView.swift; sourceTree = "<group>"; };
+		A575FC0528947792006245F5 /* ContentCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCollectionCell.swift; sourceTree = "<group>"; };
+		A575FC07289477AD006245F5 /* ContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableViewCell.swift; sourceTree = "<group>"; };
+		A575FC092894885D006245F5 /* DetailCharacterTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCharacterTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +180,10 @@
 		A575FBFE28947529006245F5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A575FC032894762C006245F5 /* DetailCharacterHeaderView.swift */,
+				A575FC0528947792006245F5 /* ContentCollectionCell.swift */,
+				A575FC07289477AD006245F5 /* ContentTableViewCell.swift */,
+				A575FC092894885D006245F5 /* DetailCharacterTableView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -184,6 +198,7 @@
 		A575FC0028947535006245F5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A575FC01289475F4006245F5 /* DetailCharacterViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -259,8 +274,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A575FBF428943DF1006245F5 /* CharactersViewController.swift in Sources */,
+				A575FC02289475F4006245F5 /* DetailCharacterViewController.swift in Sources */,
+				A575FC042894762C006245F5 /* DetailCharacterHeaderView.swift in Sources */,
+				A575FC08289477AD006245F5 /* ContentTableViewCell.swift in Sources */,
+				A575FC0628947792006245F5 /* ContentCollectionCell.swift in Sources */,
 				A575FBD928943A50006245F5 /* AppDelegate.swift in Sources */,
 				A575FBFA289458F1006245F5 /* CharactersView.swift in Sources */,
+				A575FC0A2894885D006245F5 /* DetailCharacterTableView.swift in Sources */,
 				A575FBFC28946020006245F5 /* CustomCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
