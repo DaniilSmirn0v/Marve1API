@@ -15,6 +15,8 @@ class DetailCharacterViewController: UIViewController {
         return view as? DetailCharacterTableView
     }
     
+    var presenter: DetailCharactersPresenterProtocol?
+    
     //MARK: - Life cycle
     
     override func viewDidLoad() {
@@ -31,6 +33,8 @@ class DetailCharacterViewController: UIViewController {
     }
 }
 
+
+//MARK: - UITableViewDataSource
 extension DetailCharacterViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         10
@@ -62,7 +66,27 @@ extension DetailCharacterViewController: UITableViewDataSource {
     
 }
 
-
+//MARK: - UITableViewDelegate
 extension DetailCharacterViewController: UITableViewDelegate {
+    
+}
+
+
+//MARK: - DetailCharactersViewProtocol
+
+extension DetailCharacterViewController: DetailCharactersViewProtocol {
+    func setCharacter(data: Hero?) {
+        <#code#>
+    }
+    
+    func success() {
+        detailCharacterTableView?.tableView.reloadData()
+    }
+    
+    func failure(error: NetworkError) {
+        print(error.localizedDescription)
+    }
+    
+    
     
 }

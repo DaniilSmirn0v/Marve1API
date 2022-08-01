@@ -17,6 +17,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 15
         imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         imageView.backgroundColor = .red
         return imageView
     }()
@@ -28,7 +29,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
         characterLabel.textColor = .white
         characterLabel.textAlignment = .center
         characterLabel.numberOfLines = 2
-        characterLabel.backgroundColor = .black.withAlphaComponent(0.5)
+        characterLabel.backgroundColor = .black.withAlphaComponent(0.6)
         return characterLabel
     }()
     

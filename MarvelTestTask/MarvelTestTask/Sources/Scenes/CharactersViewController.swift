@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 class CharactersViewController: UIViewController {
     
@@ -17,11 +18,14 @@ class CharactersViewController: UIViewController {
         return view as? CharactersView
     }
     
+    var presenter: CharactersPresenterProtocol?
     //MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        
+        
     }
     
     //MARK: - Settings
@@ -30,13 +34,14 @@ class CharactersViewController: UIViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         title = "Characters"
+        presenter?.fetchCharactersData()
         charactersView?.collectionView.delegate = self
         charactersView?.collectionView.dataSource = self
+        
     }
     
-    
-    
 }
+
 
 extension CharactersViewController: UICollectionViewDelegate {
     
@@ -44,18 +49,37 @@ extension CharactersViewController: UICollectionViewDelegate {
 
 extension CharactersViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        presenter?.marvelData?.data.results.count ?? 0
     }
-
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.reuseID, for: indexPath)
-                        as? CustomCollectionViewCell else { return CustomCollectionViewCell() }
+                as? CustomCollectionViewCell else { return CustomCollectionViewCell() }
+        let char = presenter?.marvelData?.data.results[indexPath.item]
+        let urlString = char?.thumbnail.url ?? ""
+      
+        DispatchQueue.main.async {
+            cell.imageView.download(image: urlString)
+        }
+     
+        cell.characterLabel.text = char?.name
         
-        cell.characterLabel.text = "123123123"
-//        cell.imageView.image = UIImage(named: "test1")
         return cell
     }
+    
+}
+
+extension CharactersViewController: CharactersViewProtocol {
+    func success() {
+        charactersView?.collectionView.reloadData()
+    }
+    
+    func failure(error: NetworkError) {
+        print(error.errorDescription as Any)
+    }
+    
+    
     
     
 }
