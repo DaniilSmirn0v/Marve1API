@@ -23,8 +23,6 @@ struct Hero: Codable {
     }
 }
 
-
-
 // MARK: - Thumbnail
 struct Thumbnail: Codable {
     let path: String

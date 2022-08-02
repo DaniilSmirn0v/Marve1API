@@ -23,7 +23,7 @@
 		A575FC1728971E68006245F5 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC1628971E67006245F5 /* NetworkError.swift */; };
 		A575FC1928972206006245F5 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC1828972206006245F5 /* NetworkService.swift */; };
 		A575FC1C2897289D006245F5 /* URL extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC1B2897289D006245F5 /* URL extension.swift */; };
-		A575FC1F2897DCBA006245F5 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC1E2897DCBA006245F5 /* ModuleBuilder.swift */; };
+		A575FC1F2897DCBA006245F5 /* AssemblyModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC1E2897DCBA006245F5 /* AssemblyModule.swift */; };
 		A575FC27289816C4006245F5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A575FC26289816C4006245F5 /* Kingfisher */; };
 		A575FC29289816E1006245F5 /* UIImageView extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC28289816E1006245F5 /* UIImageView extension.swift */; };
 		A575FC2B28983612006245F5 /* DetailCharactersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC2A28983611006245F5 /* DetailCharactersPresenter.swift */; };
@@ -32,6 +32,7 @@
 		A575FC3E2898633C006245F5 /* Comics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC3D2898633C006245F5 /* Comics.swift */; };
 		A575FC4028986346006245F5 /* Stories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC3F28986346006245F5 /* Stories.swift */; };
 		A575FC4228986350006245F5 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC4128986350006245F5 /* Hero.swift */; };
+		A575FC45289930AB006245F5 /* RouterModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC44289930AB006245F5 /* RouterModule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,7 +54,7 @@
 		A575FC1628971E67006245F5 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		A575FC1828972206006245F5 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		A575FC1B2897289D006245F5 /* URL extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL extension.swift"; sourceTree = "<group>"; };
-		A575FC1E2897DCBA006245F5 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
+		A575FC1E2897DCBA006245F5 /* AssemblyModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyModule.swift; sourceTree = "<group>"; };
 		A575FC28289816E1006245F5 /* UIImageView extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView extension.swift"; sourceTree = "<group>"; };
 		A575FC2A28983611006245F5 /* DetailCharactersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCharactersPresenter.swift; sourceTree = "<group>"; };
 		A575FC3928986321006245F5 /* MarvelInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelInfo.swift; sourceTree = "<group>"; };
@@ -61,6 +62,7 @@
 		A575FC3D2898633C006245F5 /* Comics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comics.swift; sourceTree = "<group>"; };
 		A575FC3F28986346006245F5 /* Stories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stories.swift; sourceTree = "<group>"; };
 		A575FC4128986350006245F5 /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
+		A575FC44289930AB006245F5 /* RouterModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterModule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +115,8 @@
 			children = (
 				A575FC1A2897287D006245F5 /* Extensions */,
 				A575FBF028943BDD006245F5 /* Application */,
-				A575FC1D2897DC97006245F5 /* ModuleBuilder */,
+				A575FC1D2897DC97006245F5 /* AssemblyModule */,
+				A575FC4328992FDC006245F5 /* RouterModule */,
 				A575FC0D2897061D006245F5 /* Networking */,
 				A575FBF128943BFA006245F5 /* Scenes */,
 			);
@@ -255,12 +258,12 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
-		A575FC1D2897DC97006245F5 /* ModuleBuilder */ = {
+		A575FC1D2897DC97006245F5 /* AssemblyModule */ = {
 			isa = PBXGroup;
 			children = (
-				A575FC1E2897DCBA006245F5 /* ModuleBuilder.swift */,
+				A575FC1E2897DCBA006245F5 /* AssemblyModule.swift */,
 			);
-			path = ModuleBuilder;
+			path = AssemblyModule;
 			sourceTree = "<group>";
 		};
 		A575FC3528985ED6006245F5 /* Network */ = {
@@ -283,6 +286,14 @@
 				A575FC3F28986346006245F5 /* Stories.swift */,
 			);
 			path = MarvelModel;
+			sourceTree = "<group>";
+		};
+		A575FC4328992FDC006245F5 /* RouterModule */ = {
+			isa = PBXGroup;
+			children = (
+				A575FC44289930AB006245F5 /* RouterModule.swift */,
+			);
+			path = RouterModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -373,10 +384,11 @@
 				A575FC0628947792006245F5 /* ContentCollectionCell.swift in Sources */,
 				A575FC4028986346006245F5 /* Stories.swift in Sources */,
 				A575FBD928943A50006245F5 /* AppDelegate.swift in Sources */,
+				A575FC45289930AB006245F5 /* RouterModule.swift in Sources */,
 				A575FC0C289703DD006245F5 /* CharactersPresenter.swift in Sources */,
 				A575FBFA289458F1006245F5 /* CharactersView.swift in Sources */,
 				A575FC4228986350006245F5 /* Hero.swift in Sources */,
-				A575FC1F2897DCBA006245F5 /* ModuleBuilder.swift in Sources */,
+				A575FC1F2897DCBA006245F5 /* AssemblyModule.swift in Sources */,
 				A575FC1C2897289D006245F5 /* URL extension.swift in Sources */,
 				A575FC1728971E68006245F5 /* NetworkError.swift in Sources */,
 				A575FC0A2894885D006245F5 /* DetailCharacterTableView.swift in Sources */,

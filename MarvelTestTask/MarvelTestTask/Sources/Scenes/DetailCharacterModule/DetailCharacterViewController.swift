@@ -23,15 +23,19 @@ class DetailCharacterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setupNavigationController()
     }
     
     //MARK: - Settings
     private func setupView() {
         view = DetailCharacterTableView()
         presenter?.setChar()
-        title = hero?.name
         detailCharacterTableView?.tableView.delegate = self
         detailCharacterTableView?.tableView.dataSource = self        
+    }
+    
+    private func setupNavigationController() {
+        title = hero?.name
     }
 }
 
@@ -45,7 +49,6 @@ extension DetailCharacterViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ContentTableViewCell.reuseID, for: indexPath)
                 as? ContentTableViewCell else { return UITableViewCell()}
-        
         
         return cell
         
@@ -74,7 +77,7 @@ extension DetailCharacterViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        300
+        250
     }
     
 }
