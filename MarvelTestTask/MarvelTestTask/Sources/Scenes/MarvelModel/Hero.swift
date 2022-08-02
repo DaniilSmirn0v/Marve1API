@@ -10,18 +10,16 @@ import Foundation
 struct Hero: Codable {
     let id: Int
     let name, resultDescription: String
-    //let modified: Date?
     let thumbnail: Thumbnail
-    //let resourceURI: String?
-    //let comics, series: Comics?
-    //let stories: Stories?
-    //let events: Comics?
+    let comics, series: Comics?
     let urls: [URLElement]
     
     enum CodingKeys: String, CodingKey {
         case id, name
         case resultDescription = "description"
         case thumbnail, urls
+        case comics, series
+
     }
 }
 

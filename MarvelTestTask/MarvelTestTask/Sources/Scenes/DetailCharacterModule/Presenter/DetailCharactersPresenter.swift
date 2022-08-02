@@ -10,25 +10,21 @@ import Foundation
 
 protocol DetailCharactersViewProtocol: AnyObject {
     func success()
-    func failure(error: NetworkError)
     func setCharacter(data: Hero?)
   
 }
 
 protocol DetailCharactersPresenterProtocol: AnyObject {
-    init(view: DetailCharactersViewProtocol, networkService: NetworkServiceProtocol, hero: Hero? )
+    init(view: DetailCharactersViewProtocol, hero: Hero? )
     func setChar()
-//    var heroInfo: HeroInfo? { get set }
 }
 
 class DetailCharactersPresenter: DetailCharactersPresenterProtocol {
     weak var view: DetailCharactersViewProtocol?
-    let networkService: NetworkServiceProtocol
     var hero: Hero?
     
-    required init(view: DetailCharactersViewProtocol, networkService: NetworkServiceProtocol, hero: Hero?) {
+    required init(view: DetailCharactersViewProtocol, hero: Hero?) {
         self.view = view
-        self.networkService = networkService
         self.hero = hero
     }
     

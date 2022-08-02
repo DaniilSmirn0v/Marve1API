@@ -44,7 +44,11 @@ class CharactersViewController: UIViewController {
 
 
 extension CharactersViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let hero = presenter?.marvelData?.data.results[indexPath.item]
+        let detailViewController = ModuleBuilder.createDetailCharacterViewController(hero: hero)
+        navigationController?.pushViewController(detailViewController, animated: true)
+    }
 }
 
 extension CharactersViewController: UICollectionViewDataSource {

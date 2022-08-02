@@ -20,10 +20,11 @@ class DetailCharacterHeaderView: UITableViewHeaderFooterView {
         return stackView
     }()
     
-    private lazy var imageView: UIImageView = {
+     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
+         imageView.clipsToBounds = true
         imageView.backgroundColor = .systemYellow
         return imageView
     }()
@@ -37,7 +38,7 @@ class DetailCharacterHeaderView: UITableViewHeaderFooterView {
         return label
     }()
     
-    private lazy var nameDataLabel: UILabel = {
+     lazy var nameDataLabel: UILabel = {
         let label = UILabel()
         label.text = "Random Name"
         label.font = .systemFont(ofSize: 15, weight: .regular)
@@ -56,7 +57,7 @@ class DetailCharacterHeaderView: UITableViewHeaderFooterView {
         return label
     }()
     
-    private lazy var descriptionDataLabel: UILabel = {
+     lazy var descriptionDataLabel: UILabel = {
         let label = UILabel()
         label.text = "ОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекста"
         label.numberOfLines = 0

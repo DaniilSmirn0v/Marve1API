@@ -16,6 +16,7 @@ class DetailCharacterViewController: UIViewController {
     }
     
     var presenter: DetailCharactersPresenterProtocol?
+    var hero: Hero?
     
     //MARK: - Life cycle
     
@@ -27,7 +28,8 @@ class DetailCharacterViewController: UIViewController {
     //MARK: - Settings
     private func setupView() {
         view = DetailCharacterTableView()
-        title = "Name"
+        presenter?.setChar()
+        title = hero?.name
         detailCharacterTableView?.tableView.delegate = self
         detailCharacterTableView?.tableView.dataSource = self        
     }
@@ -37,13 +39,13 @@ class DetailCharacterViewController: UIViewController {
 //MARK: - UITableViewDataSource
 extension DetailCharacterViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ContentTableViewCell.reuseID, for: indexPath)
                 as? ContentTableViewCell else { return UITableViewCell()}
-       
+        
         
         return cell
         
@@ -53,6 +55,17 @@ extension DetailCharacterViewController: UITableViewDataSource {
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: DetailCharacterHeaderView.reuseID)
                 as? DetailCharacterHeaderView else { return DetailCharacterHeaderView() }
         header.contentView.backgroundColor = .black
+        let urlString = hero?.thumbnail.url ?? ""
+        header.nameDataLabel.text = hero?.name
+        
+            
+        header.descriptionDataLabel.text = hero?.resultDescription.description != ""
+                                        ? hero?.resultDescription.description
+                                        : "Glorious description is missing!:>"
+
+        DispatchQueue.main.async {
+            header.imageView.download(image: urlString)
+        }
         return header
     }
     
@@ -76,16 +89,13 @@ extension DetailCharacterViewController: UITableViewDelegate {
 
 extension DetailCharacterViewController: DetailCharactersViewProtocol {
     func setCharacter(data: Hero?) {
-        <#code#>
+        hero = data
     }
     
     func success() {
         detailCharacterTableView?.tableView.reloadData()
     }
     
-    func failure(error: NetworkError) {
-        print(error.localizedDescription)
-    }
     
     
     
