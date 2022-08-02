@@ -60,7 +60,7 @@ extension DetailCharacterViewController: UITableViewDataSource {
         header.contentView.backgroundColor = .black
         let urlString = hero?.thumbnail.url ?? ""
         header.nameDataLabel.text = hero?.name
-        
+        print(hero?.id)
             
         header.descriptionDataLabel.text = hero?.resultDescription.description != ""
                                         ? hero?.resultDescription.description

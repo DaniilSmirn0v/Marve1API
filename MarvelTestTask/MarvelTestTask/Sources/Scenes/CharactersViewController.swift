@@ -70,11 +70,16 @@ extension CharactersViewController: UICollectionViewDataSource {
         let urlString = char?.thumbnail.url ?? ""
         
         cell.activityIndicatorView.startAnimating()
-        
-        DispatchQueue.main.async {
-            cell.imageView.download(image: urlString)
+        if urlString == "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg" {
+            cell.imageView.image = UIImage(named: "tony")
             cell.activityIndicatorView.stopAnimating()
+        } else {
+            DispatchQueue.main.async {
+                cell.imageView.download(image: urlString)
+                cell.activityIndicatorView.stopAnimating()
+            }
         }
+        
         
         cell.characterLabel.text = char?.name
         
@@ -94,12 +99,20 @@ extension CharactersViewController: CharactersViewProtocol {
         }
     }
     
-    
     func failure(error: NetworkError) {
-        print(error.errorDescription as Any)
+        showError(error: error)
+    }
+}
+
+extension CharactersViewController {
+    func showError(error: NetworkError) {
+        charactersView?.blurView.isHidden = false
+        let action = UIAlertAction(title: "okey:<", style: .default, handler: (repeatedRequest))
+        showAlert(title: "Whats the hell????", message: error.errorDescription, actions: [action])
     }
     
-    
-    
-    
+    func repeatedRequest(action: UIAlertAction) {
+        presenter?.fetchCharactersData()
+//        dismiss(animated: true)
+    }
 }

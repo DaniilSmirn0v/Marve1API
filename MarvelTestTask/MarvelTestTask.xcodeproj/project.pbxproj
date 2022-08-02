@@ -33,6 +33,7 @@
 		A575FC4028986346006245F5 /* Stories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC3F28986346006245F5 /* Stories.swift */; };
 		A575FC4228986350006245F5 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC4128986350006245F5 /* Hero.swift */; };
 		A575FC45289930AB006245F5 /* RouterModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC44289930AB006245F5 /* RouterModule.swift */; };
+		A5F61D6A2899D066005FE5CC /* AlertController extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F61D692899D066005FE5CC /* AlertController extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		A575FC3F28986346006245F5 /* Stories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stories.swift; sourceTree = "<group>"; };
 		A575FC4128986350006245F5 /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		A575FC44289930AB006245F5 /* RouterModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterModule.swift; sourceTree = "<group>"; };
+		A5F61D692899D066005FE5CC /* AlertController extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertController extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +256,7 @@
 			children = (
 				A575FC1B2897289D006245F5 /* URL extension.swift */,
 				A575FC28289816E1006245F5 /* UIImageView extension.swift */,
+				A5F61D692899D066005FE5CC /* AlertController extension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				A575FC3A28986321006245F5 /* MarvelInfo.swift in Sources */,
 				A575FC0628947792006245F5 /* ContentCollectionCell.swift in Sources */,
 				A575FC4028986346006245F5 /* Stories.swift in Sources */,
+				A5F61D6A2899D066005FE5CC /* AlertController extension.swift in Sources */,
 				A575FBD928943A50006245F5 /* AppDelegate.swift in Sources */,
 				A575FC45289930AB006245F5 /* RouterModule.swift in Sources */,
 				A575FC0C289703DD006245F5 /* CharactersPresenter.swift in Sources */,
