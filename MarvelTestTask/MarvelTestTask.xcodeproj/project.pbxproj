@@ -8,22 +8,59 @@
 
 /* Begin PBXBuildFile section */
 		A575FBD928943A50006245F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FBD828943A50006245F5 /* AppDelegate.swift */; };
-		A575FBDB28943A50006245F5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FBDA28943A50006245F5 /* SceneDelegate.swift */; };
-		A575FBDD28943A50006245F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FBDC28943A50006245F5 /* ViewController.swift */; };
-		A575FBE028943A50006245F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A575FBDE28943A50006245F5 /* Main.storyboard */; };
 		A575FBE228943A52006245F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A575FBE128943A52006245F5 /* Assets.xcassets */; };
 		A575FBE528943A52006245F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A575FBE328943A52006245F5 /* LaunchScreen.storyboard */; };
+		A575FBF428943DF1006245F5 /* CharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FBF328943DF1006245F5 /* CharactersViewController.swift */; };
+		A575FBFA289458F1006245F5 /* CharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FBF9289458F1006245F5 /* CharactersView.swift */; };
+		A575FBFC28946020006245F5 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FBFB28946020006245F5 /* CustomCollectionViewCell.swift */; };
+		A575FC02289475F4006245F5 /* DetailCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC01289475F4006245F5 /* DetailCharacterViewController.swift */; };
+		A575FC042894762C006245F5 /* DetailCharacterHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC032894762C006245F5 /* DetailCharacterHeaderView.swift */; };
+		A575FC0628947792006245F5 /* ContentCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC0528947792006245F5 /* ContentCollectionCell.swift */; };
+		A575FC08289477AD006245F5 /* ContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC07289477AD006245F5 /* ContentTableViewCell.swift */; };
+		A575FC0A2894885D006245F5 /* DetailCharacterTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC092894885D006245F5 /* DetailCharacterTableView.swift */; };
+		A575FC0C289703DD006245F5 /* CharactersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC0B289703DD006245F5 /* CharactersPresenter.swift */; };
+		A575FC1528971CD3006245F5 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC1428971CD3006245F5 /* UserSettings.swift */; };
+		A575FC1728971E68006245F5 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC1628971E67006245F5 /* NetworkError.swift */; };
+		A575FC1928972206006245F5 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC1828972206006245F5 /* NetworkService.swift */; };
+		A575FC1C2897289D006245F5 /* URL extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC1B2897289D006245F5 /* URL extension.swift */; };
+		A575FC1F2897DCBA006245F5 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC1E2897DCBA006245F5 /* ModuleBuilder.swift */; };
+		A575FC27289816C4006245F5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A575FC26289816C4006245F5 /* Kingfisher */; };
+		A575FC29289816E1006245F5 /* UIImageView extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC28289816E1006245F5 /* UIImageView extension.swift */; };
+		A575FC2B28983612006245F5 /* DetailCharactersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC2A28983611006245F5 /* DetailCharactersPresenter.swift */; };
+		A575FC3A28986321006245F5 /* MarvelInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC3928986321006245F5 /* MarvelInfo.swift */; };
+		A575FC3C2898632D006245F5 /* DataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC3B2898632D006245F5 /* DataClass.swift */; };
+		A575FC3E2898633C006245F5 /* Comics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC3D2898633C006245F5 /* Comics.swift */; };
+		A575FC4028986346006245F5 /* Stories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC3F28986346006245F5 /* Stories.swift */; };
+		A575FC4228986350006245F5 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC4128986350006245F5 /* Hero.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A575FBD528943A50006245F5 /* MarvelTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A575FBD828943A50006245F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A575FBDA28943A50006245F5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A575FBDC28943A50006245F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A575FBDF28943A50006245F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A575FBE128943A52006245F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A575FBE428943A52006245F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A575FBE628943A52006245F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A575FBF328943DF1006245F5 /* CharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewController.swift; sourceTree = "<group>"; };
+		A575FBF9289458F1006245F5 /* CharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersView.swift; sourceTree = "<group>"; };
+		A575FBFB28946020006245F5 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		A575FC01289475F4006245F5 /* DetailCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCharacterViewController.swift; sourceTree = "<group>"; };
+		A575FC032894762C006245F5 /* DetailCharacterHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCharacterHeaderView.swift; sourceTree = "<group>"; };
+		A575FC0528947792006245F5 /* ContentCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCollectionCell.swift; sourceTree = "<group>"; };
+		A575FC07289477AD006245F5 /* ContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableViewCell.swift; sourceTree = "<group>"; };
+		A575FC092894885D006245F5 /* DetailCharacterTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCharacterTableView.swift; sourceTree = "<group>"; };
+		A575FC0B289703DD006245F5 /* CharactersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersPresenter.swift; sourceTree = "<group>"; };
+		A575FC1428971CD3006245F5 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		A575FC1628971E67006245F5 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		A575FC1828972206006245F5 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		A575FC1B2897289D006245F5 /* URL extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL extension.swift"; sourceTree = "<group>"; };
+		A575FC1E2897DCBA006245F5 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
+		A575FC28289816E1006245F5 /* UIImageView extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView extension.swift"; sourceTree = "<group>"; };
+		A575FC2A28983611006245F5 /* DetailCharactersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCharactersPresenter.swift; sourceTree = "<group>"; };
+		A575FC3928986321006245F5 /* MarvelInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelInfo.swift; sourceTree = "<group>"; };
+		A575FC3B2898632D006245F5 /* DataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataClass.swift; sourceTree = "<group>"; };
+		A575FC3D2898633C006245F5 /* Comics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comics.swift; sourceTree = "<group>"; };
+		A575FC3F28986346006245F5 /* Stories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stories.swift; sourceTree = "<group>"; };
+		A575FC4128986350006245F5 /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A575FC27289816C4006245F5 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +94,195 @@
 		A575FBD728943A50006245F5 /* MarvelTestTask */ = {
 			isa = PBXGroup;
 			children = (
-				A575FBD828943A50006245F5 /* AppDelegate.swift */,
-				A575FBDA28943A50006245F5 /* SceneDelegate.swift */,
-				A575FBDC28943A50006245F5 /* ViewController.swift */,
-				A575FBDE28943A50006245F5 /* Main.storyboard */,
-				A575FBE128943A52006245F5 /* Assets.xcassets */,
-				A575FBE328943A52006245F5 /* LaunchScreen.storyboard */,
-				A575FBE628943A52006245F5 /* Info.plist */,
+				A575FBEE28943B7B006245F5 /* Resources */,
+				A575FBED28943B57006245F5 /* Sources */,
 			);
 			path = MarvelTestTask;
+			sourceTree = "<group>";
+		};
+		A575FBEC28943B43006245F5 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				A575FBE628943A52006245F5 /* Info.plist */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		A575FBED28943B57006245F5 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				A575FC1A2897287D006245F5 /* Extensions */,
+				A575FBF028943BDD006245F5 /* Application */,
+				A575FC1D2897DC97006245F5 /* ModuleBuilder */,
+				A575FC0D2897061D006245F5 /* Networking */,
+				A575FBF128943BFA006245F5 /* Scenes */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		A575FBEE28943B7B006245F5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A575FBEF28943B9C006245F5 /* Supporting files */,
+				A575FBEC28943B43006245F5 /* Configuration */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A575FBEF28943B9C006245F5 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				A575FBE128943A52006245F5 /* Assets.xcassets */,
+				A575FBE328943A52006245F5 /* LaunchScreen.storyboard */,
+			);
+			name = "Supporting files";
+			sourceTree = "<group>";
+		};
+		A575FBF028943BDD006245F5 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				A575FBD828943A50006245F5 /* AppDelegate.swift */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		A575FBF128943BFA006245F5 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				A575FBF228943DB3006245F5 /* CharactersModule */,
+				A575FBFD28947294006245F5 /* DetailCharacterModule */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		A575FBF228943DB3006245F5 /* CharactersModule */ = {
+			isa = PBXGroup;
+			children = (
+				A575FBF6289456F9006245F5 /* Presenter */,
+				A575FBF5289456E7006245F5 /* Controller */,
+				A575FBF728945790006245F5 /* Views */,
+			);
+			name = CharactersModule;
+			sourceTree = "<group>";
+		};
+		A575FBF5289456E7006245F5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A575FBF328943DF1006245F5 /* CharactersViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		A575FBF6289456F9006245F5 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A575FC0B289703DD006245F5 /* CharactersPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A575FBF728945790006245F5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A575FBF82894579C006245F5 /* Cell */,
+				A575FBF9289458F1006245F5 /* CharactersView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A575FBF82894579C006245F5 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A575FBFB28946020006245F5 /* CustomCollectionViewCell.swift */,
+			);
+			name = Cell;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		A575FBFD28947294006245F5 /* DetailCharacterModule */ = {
+			isa = PBXGroup;
+			children = (
+				A575FBFF2894752E006245F5 /* Presenter */,
+				A575FC0028947535006245F5 /* Controller */,
+				A575FBFE28947529006245F5 /* Views */,
+			);
+			path = DetailCharacterModule;
+			sourceTree = "<group>";
+		};
+		A575FBFE28947529006245F5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A575FC032894762C006245F5 /* DetailCharacterHeaderView.swift */,
+				A575FC0528947792006245F5 /* ContentCollectionCell.swift */,
+				A575FC07289477AD006245F5 /* ContentTableViewCell.swift */,
+				A575FC092894885D006245F5 /* DetailCharacterTableView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		A575FBFF2894752E006245F5 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A575FC2A28983611006245F5 /* DetailCharactersPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A575FC0028947535006245F5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A575FC01289475F4006245F5 /* DetailCharacterViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		A575FC0D2897061D006245F5 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A575FC382898630F006245F5 /* MarvelModel */,
+				A575FC3528985ED6006245F5 /* Network */,
+			);
+			name = Networking;
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		A575FC1A2897287D006245F5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A575FC1B2897289D006245F5 /* URL extension.swift */,
+				A575FC28289816E1006245F5 /* UIImageView extension.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		A575FC1D2897DC97006245F5 /* ModuleBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				A575FC1E2897DCBA006245F5 /* ModuleBuilder.swift */,
+			);
+			path = ModuleBuilder;
+			sourceTree = "<group>";
+		};
+		A575FC3528985ED6006245F5 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A575FC1628971E67006245F5 /* NetworkError.swift */,
+				A575FC1828972206006245F5 /* NetworkService.swift */,
+				A575FC1428971CD3006245F5 /* UserSettings.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		A575FC382898630F006245F5 /* MarvelModel */ = {
+			isa = PBXGroup;
+			children = (
+				A575FC3928986321006245F5 /* MarvelInfo.swift */,
+				A575FC3B2898632D006245F5 /* DataClass.swift */,
+				A575FC4128986350006245F5 /* Hero.swift */,
+				A575FC3D2898633C006245F5 /* Comics.swift */,
+				A575FC3F28986346006245F5 /* Stories.swift */,
+			);
+			path = MarvelModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +301,9 @@
 			dependencies = (
 			);
 			name = MarvelTestTask;
+			packageProductDependencies = (
+				A575FC26289816C4006245F5 /* Kingfisher */,
+			);
 			productName = MarvelTestTask;
 			productReference = A575FBD528943A50006245F5 /* MarvelTestTask.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +332,9 @@
 				Base,
 			);
 			mainGroup = A575FBCC28943A50006245F5;
+			packageReferences = (
+				A575FC25289816C4006245F5 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = A575FBD628943A50006245F5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,7 +351,6 @@
 			files = (
 				A575FBE528943A52006245F5 /* LaunchScreen.storyboard in Resources */,
 				A575FBE228943A52006245F5 /* Assets.xcassets in Resources */,
-				A575FBE028943A50006245F5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +361,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A575FBDD28943A50006245F5 /* ViewController.swift in Sources */,
+				A575FBF428943DF1006245F5 /* CharactersViewController.swift in Sources */,
+				A575FC1528971CD3006245F5 /* UserSettings.swift in Sources */,
+				A575FC02289475F4006245F5 /* DetailCharacterViewController.swift in Sources */,
+				A575FC042894762C006245F5 /* DetailCharacterHeaderView.swift in Sources */,
+				A575FC29289816E1006245F5 /* UIImageView extension.swift in Sources */,
+				A575FC3E2898633C006245F5 /* Comics.swift in Sources */,
+				A575FC08289477AD006245F5 /* ContentTableViewCell.swift in Sources */,
+				A575FC1928972206006245F5 /* NetworkService.swift in Sources */,
+				A575FC3A28986321006245F5 /* MarvelInfo.swift in Sources */,
+				A575FC0628947792006245F5 /* ContentCollectionCell.swift in Sources */,
+				A575FC4028986346006245F5 /* Stories.swift in Sources */,
 				A575FBD928943A50006245F5 /* AppDelegate.swift in Sources */,
-				A575FBDB28943A50006245F5 /* SceneDelegate.swift in Sources */,
+				A575FC0C289703DD006245F5 /* CharactersPresenter.swift in Sources */,
+				A575FBFA289458F1006245F5 /* CharactersView.swift in Sources */,
+				A575FC4228986350006245F5 /* Hero.swift in Sources */,
+				A575FC1F2897DCBA006245F5 /* ModuleBuilder.swift in Sources */,
+				A575FC1C2897289D006245F5 /* URL extension.swift in Sources */,
+				A575FC1728971E68006245F5 /* NetworkError.swift in Sources */,
+				A575FC0A2894885D006245F5 /* DetailCharacterTableView.swift in Sources */,
+				A575FBFC28946020006245F5 /* CustomCollectionViewCell.swift in Sources */,
+				A575FC3C2898632D006245F5 /* DataClass.swift in Sources */,
+				A575FC2B28983612006245F5 /* DetailCharactersPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A575FBDE28943A50006245F5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A575FBDF28943A50006245F5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A575FBE328943A52006245F5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -288,10 +522,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MarvelTestTask/Info.plist;
+				INFOPLIST_FILE = MarvelTestTask/Resources/Configuration/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -303,7 +536,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -315,10 +548,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MarvelTestTask/Info.plist;
+				INFOPLIST_FILE = MarvelTestTask/Resources/Configuration/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -330,7 +562,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -356,6 +588,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A575FC25289816C4006245F5 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A575FC26289816C4006245F5 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A575FC25289816C4006245F5 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A575FBCD28943A50006245F5 /* Project object */;
 }
