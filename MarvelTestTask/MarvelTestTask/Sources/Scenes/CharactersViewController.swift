@@ -37,12 +37,10 @@ class CharactersViewController: UIViewController {
         presenter?.fetchCharactersData()
         charactersView?.collectionView.delegate = self
         charactersView?.collectionView.dataSource = self
-        
     }
-    
 }
 
-
+//MARK: - UICollectionViewDelegate
 extension CharactersViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let hero = presenter?.marvelData?.data.results[indexPath.item]
@@ -51,6 +49,8 @@ extension CharactersViewController: UICollectionViewDelegate {
     }
 }
 
+
+//MARK: - UICollectionViewDataSource
 extension CharactersViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         presenter?.marvelData?.data.results.count ?? 0
@@ -74,6 +74,7 @@ extension CharactersViewController: UICollectionViewDataSource {
     
 }
 
+//MARK: - CharactersViewProtocol
 extension CharactersViewController: CharactersViewProtocol {
     func success() {
         charactersView?.collectionView.reloadData()
