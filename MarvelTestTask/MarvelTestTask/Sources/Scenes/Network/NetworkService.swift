@@ -27,7 +27,7 @@ private extension NetworkService {
                 completion(.failure(.badURL))
                 return
             }
-            
+                
             let task = URLSession.shared.dataTask(with: url) { data, response, error in
                 guard let response = response as? HTTPURLResponse,
                       (200...299).contains(response.statusCode)

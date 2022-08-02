@@ -15,17 +15,18 @@ protocol DetailCharactersViewProtocol: AnyObject {
 }
 
 protocol DetailCharactersPresenterProtocol: AnyObject {
-    init(view: DetailCharactersViewProtocol, hero: Hero? )
+    init(view: DetailCharactersViewProtocol, hero: Hero?, router: RouterModuleProtocol )
     func setChar()
 }
 
 class DetailCharactersPresenter: DetailCharactersPresenterProtocol {
     weak var view: DetailCharactersViewProtocol?
     var hero: Hero?
-    
-    required init(view: DetailCharactersViewProtocol, hero: Hero?) {
+    let router: RouterModuleProtocol?
+    required init(view: DetailCharactersViewProtocol, hero: Hero?, router: RouterModuleProtocol) {
         self.view = view
         self.hero = hero
+        self.router = router
     }
     
     func setChar() {

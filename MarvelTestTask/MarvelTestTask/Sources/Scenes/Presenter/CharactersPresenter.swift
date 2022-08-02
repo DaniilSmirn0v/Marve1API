@@ -13,21 +13,23 @@ protocol CharactersViewProtocol: AnyObject {
 }
 
 protocol CharactersPresenterProtocol: AnyObject {
-    init(view: CharactersViewProtocol, networking: NetworkServiceProtocol)
+    init(view: CharactersViewProtocol, networking: NetworkServiceProtocol, router: RouterModuleProtocol)
     var marvelData: MarvelInfo? {get set}
     func fetchCharactersData()
+    func tapOnTheRow(hero: Hero?)
 }
 
 
 class CharactersPresenter: CharactersPresenterProtocol {
- 
+   
     weak var view: CharactersViewProtocol?
     let networking: NetworkServiceProtocol?
     var marvelData: MarvelInfo?
-    
-    required init(view: CharactersViewProtocol, networking: NetworkServiceProtocol) {
+    let router: RouterModuleProtocol?
+    required init(view: CharactersViewProtocol, networking: NetworkServiceProtocol, router: RouterModuleProtocol) {
         self.view = view
         self.networking = networking
+        self.router = router
         fetchCharactersData()
     }
     
@@ -46,6 +48,11 @@ class CharactersPresenter: CharactersPresenterProtocol {
             }
         }
     }
+    
+    func tapOnTheRow(hero: Hero?) {
+        router?.showDetailCharacterViewController(hero: hero)
+    }
+    
 }
                                   
                                   

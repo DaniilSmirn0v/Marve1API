@@ -11,17 +11,20 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 var window: UIWindow?
+let navigationController = UINavigationController()
+let assemblyModule = AssemblyModule()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        let rootViewController = ModuleBuilder.createCharactersViewController()
+        let router = RouterModule(navigationController: navigationController, assemblyModule: assemblyModule)
+        router.initialViewController()
         
-        let navigaionViewController = UINavigationController(rootViewController: rootViewController)
-        navigaionViewController.navigationBar.isTranslucent = true
+        navigationController.navigationBar.isTranslucent = true
+        
         window?.overrideUserInterfaceStyle = .dark
-        window?.rootViewController = navigaionViewController
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         return true
     }
