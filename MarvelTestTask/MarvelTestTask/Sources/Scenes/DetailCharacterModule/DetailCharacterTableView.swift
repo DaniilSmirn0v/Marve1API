@@ -19,6 +19,7 @@ class DetailCharacterTableView: UIView {
         return tableView
     }()
     
+   
     //MARK: - Initialize
     override init(frame: CGRect) {
         super.init(frame: frame)

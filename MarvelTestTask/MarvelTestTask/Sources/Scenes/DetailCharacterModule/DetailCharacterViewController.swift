@@ -31,14 +31,18 @@ class DetailCharacterViewController: UIViewController {
         view = DetailCharacterTableView()
         presenter?.setChar()
         detailCharacterTableView?.tableView.delegate = self
-        detailCharacterTableView?.tableView.dataSource = self        
+        detailCharacterTableView?.tableView.dataSource = self
     }
     
     private func setupNavigationController() {
         title = hero?.name
     }
 }
+//MARK: - uicollectionviewdatasource
 
+//extension DetailCharacterViewController: UICollectionViewDataSource {
+//
+//}
 
 //MARK: - UITableViewDataSource
 extension DetailCharacterViewController: UITableViewDataSource {
@@ -49,6 +53,8 @@ extension DetailCharacterViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ContentTableViewCell.reuseID, for: indexPath)
                 as? ContentTableViewCell else { return UITableViewCell()}
+        cell.cell.descriptionLabel.text = "123123123"
+        cell.cell.imageView.image = UIImage(named: "tony")
         
         return cell
         
@@ -60,15 +66,20 @@ extension DetailCharacterViewController: UITableViewDataSource {
         header.contentView.backgroundColor = .black
         let urlString = hero?.thumbnail.url ?? ""
         header.nameDataLabel.text = hero?.name
-        print(hero?.id)
+       
             
         header.descriptionDataLabel.text = hero?.resultDescription.description != ""
                                         ? hero?.resultDescription.description
                                         : "Glorious description is missing!:>"
 
-        DispatchQueue.main.async {
-            header.imageView.download(image: urlString)
+        if urlString == "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg" {
+            header.imageView.image = UIImage(named: "tony")
+        } else {
+            DispatchQueue.main.async {
+                header.imageView.download(image: urlString)
+            }
         }
+        
         return header
     }
     

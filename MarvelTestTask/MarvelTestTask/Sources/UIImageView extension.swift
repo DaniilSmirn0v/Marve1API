@@ -13,9 +13,6 @@ extension UIImageView {
         guard let imageURL = URL(string:url) else {
             return
         }
-        
-            self.kf.setImage(with: ImageResource(downloadURL: imageURL))
-        
-        
+        self.kf.setImage(with: ImageResource(downloadURL: imageURL))
     }
 }

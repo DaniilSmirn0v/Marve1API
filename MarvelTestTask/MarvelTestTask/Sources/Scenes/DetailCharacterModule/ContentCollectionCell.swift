@@ -10,7 +10,7 @@ import UIKit
 class ContentCollectionCell: UICollectionViewCell {
     //MARK: - properties
     static let reuseID = "ContentCollectionCell"
-    
+
     //MARK: - views
 
     lazy var imageView: UIImageView = {

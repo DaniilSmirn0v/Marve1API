@@ -17,33 +17,53 @@ class CharactersViewController: UIViewController {
         return view as? CharactersView
     }
     
+    private lazy var searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search by name starts here"
+        searchController.definesPresentationContext = true
+        searchController.searchResultsUpdater = self
+        return searchController
+    }()
+    
     var presenter: CharactersPresenterProtocol?
+    
+    var filteredHero: [Hero]?
+    var heroes: [Hero]?
+    
+    var isSearchBarEmpty: Bool {
+        searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    var isFiltering: Bool {
+        searchController.isActive && !isSearchBarEmpty
+    }
+    
     
     //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter?.fetchCharactersData()
         setupView()
         setupNavigationController()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        presenter?.fetchCharactersData()
-
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//    }
     
     //MARK: - Settings
     private func setupView() {
         view = CharactersView()
+        navigationItem.searchController = searchController
         charactersView?.activityIndicatorView.startAnimating()
-
         charactersView?.collectionView.delegate = self
         charactersView?.collectionView.dataSource = self
     }
     
     private func setupNavigationController() {
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
+//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        navigationController?.navigationBar.shadowImage = UIImage()
         title = "Characters"
     }
 }
@@ -51,7 +71,13 @@ class CharactersViewController: UIViewController {
 //MARK: - UICollectionViewDelegate
 extension CharactersViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let hero = presenter?.marvelData?.data.results[indexPath.item]
+        let hero: Hero?
+        if isFiltering {
+            hero = filteredHero?[indexPath.item]
+        } else {
+            hero = presenter?.marvelData?.data.results[indexPath.item]
+        }
+        
         presenter?.tapOnTheRow(hero: hero)
     }
 }
@@ -59,15 +85,27 @@ extension CharactersViewController: UICollectionViewDelegate {
 //MARK: - UICollectionViewDataSource
 extension CharactersViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        presenter?.marvelData?.data.results.count ?? 0
+        if isFiltering {
+            return filteredHero?.count ?? 0
+        }
+        return  presenter?.marvelData?.data.results.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.reuseID, for: indexPath)
                 as? CustomCollectionViewCell else { return CustomCollectionViewCell() }
         
-        let char = presenter?.marvelData?.data.results[indexPath.item]
-        let urlString = char?.thumbnail.url ?? ""
+        var hero: Hero?
+        
+        if isFiltering {
+            hero = filteredHero?[indexPath.item]
+        } else {
+            hero = heroes?[indexPath.item]
+        }
+        
+        let urlString = hero?.thumbnail.url ?? ""
+        
+        cell.characterLabel.text = hero?.name
         
         cell.activityIndicatorView.startAnimating()
         if urlString == "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg" {
@@ -80,9 +118,6 @@ extension CharactersViewController: UICollectionViewDataSource {
             }
         }
         
-        
-        cell.characterLabel.text = char?.name
-        
         return cell
     }
 }
@@ -90,13 +125,14 @@ extension CharactersViewController: UICollectionViewDataSource {
 //MARK: - CharactersViewProtocol
 extension CharactersViewController: CharactersViewProtocol {
     func success() {
-        
-        DispatchQueue.main.async{ [self] in
-            charactersView?.activityIndicatorView.startAnimating()
-            charactersView?.collectionView.reloadData()
-            charactersView?.blurView.isHidden = true
-            charactersView?.activityIndicatorView.stopAnimating()
+        charactersView?.activityIndicatorView.startAnimating()
+        charactersView?.collectionView.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.charactersView?.blurView.isHidden = true
         }
+        
+        charactersView?.activityIndicatorView.stopAnimating()
+        heroes = presenter?.marvelData?.data.results
     }
     
     func failure(error: NetworkError) {
@@ -104,6 +140,7 @@ extension CharactersViewController: CharactersViewProtocol {
     }
 }
 
+//MARK: - Alert Controller
 extension CharactersViewController {
     func showError(error: NetworkError) {
         charactersView?.blurView.isHidden = false
@@ -113,6 +150,21 @@ extension CharactersViewController {
     
     func repeatedRequest(action: UIAlertAction) {
         presenter?.fetchCharactersData()
-//        dismiss(animated: true)
+    }
+}
+
+//MARK: - SearchResults
+extension CharactersViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        filterContentForSearchText(searchText: searchBar.text ?? "Spider")
+    }
+    
+    func filterContentForSearchText(searchText: String) {
+        filteredHero = heroes?.filter {(hero: Hero) -> Bool in
+            return hero.name.lowercased().contains(searchText.lowercased())
+        }
+        charactersView?.collectionView.reloadData()
+        
     }
 }

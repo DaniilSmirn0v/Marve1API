@@ -35,6 +35,7 @@ class ContentTableViewCell: UITableViewCell {
         return collectionView
     }()
     
+    var cell = ContentCollectionCell()
     
     //MARK: - Initialize
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -91,7 +92,7 @@ extension ContentTableViewCell {
 
 extension ContentTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        8
+        2
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -99,10 +100,6 @@ extension ContentTableViewCell: UICollectionViewDataSource {
                 as? ContentCollectionCell else { return ContentCollectionCell()}
         return cell
     }
-    
-    
-    
-    
 }
  
 
@@ -110,3 +107,4 @@ extension ContentTableViewCell: UICollectionViewDataSource {
 extension ContentTableViewCell: UICollectionViewDelegate {
     
 }
+
