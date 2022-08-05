@@ -11,13 +11,13 @@ class ContentCollectionCell: UICollectionViewCell {
     //MARK: - properties
     static let reuseID = "ContentCollectionCell"
 
-    //MARK: - views
-
+    //MARK: - views    
     lazy var imageView: UIImageView = {
        let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 15
         imageView.contentMode = .scaleToFill
+        imageView.clipsToBounds = true
         imageView.backgroundColor = .red
         return imageView
     }()
@@ -61,7 +61,6 @@ extension ContentCollectionCell {
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-//            imageView.widthAnchor.constraint(equalToConstant: 20),
             imageView.heightAnchor.constraint(equalToConstant: 150),
             
             descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),

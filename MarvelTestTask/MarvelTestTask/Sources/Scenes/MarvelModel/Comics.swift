@@ -7,15 +7,12 @@
 
 import Foundation
 
- //MARK: - Comics
-struct Comics: Codable {
-    let available: Int?
-    let collectionURI: String?
+
+struct Comics: Decodable {
     let items: [ComicsItem]?
-    let returned: Int?
+    
 }
- //MARK: - ComicsItem
-struct ComicsItem: Codable {
-    let resourceURI: String?
+
+struct ComicsItem: Decodable {
     let name: String?
 }

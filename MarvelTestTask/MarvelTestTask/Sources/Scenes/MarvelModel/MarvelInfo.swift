@@ -6,14 +6,11 @@
 //
 
 import Foundation
-// MARK: - MArvelInfo
-struct MarvelInfo: Codable {
-    let code: Int
-    let status: String
-//    let copyright, attributionText, attributionHTML: String?
-//    let etag: String?
-    let data: DataClass
+
+struct MarvelInfo: Decodable {
+    let data: Characters
 }
+
 
 
 

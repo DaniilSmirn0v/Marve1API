@@ -10,28 +10,58 @@ import Foundation
 
 protocol DetailCharactersViewProtocol: AnyObject {
     func success()
-    func setCharacter(data: Hero?)
+    func failure(error: NetworkError)
+    func setComics()
   
 }
 
 protocol DetailCharactersPresenterProtocol: AnyObject {
-    init(view: DetailCharactersViewProtocol, hero: Hero?, router: RouterModuleProtocol )
-    func setChar()
+    init(view: DetailCharactersViewProtocol, hero: Character, router: RouterModuleProtocol, networkService: NetworkServiceProtocol?)
+    var comics: [Character]? { get set }
+    var hero: Character { get set }
+    func setComics()
+    func fetchComicsData()
 }
 
 class DetailCharactersPresenter: DetailCharactersPresenterProtocol {
+   
     weak var view: DetailCharactersViewProtocol?
-    var hero: Hero?
+    var networkService: NetworkServiceProtocol?
+    var hero: Character
+    var comics: [Character]?
     let router: RouterModuleProtocol?
-    required init(view: DetailCharactersViewProtocol, hero: Hero?, router: RouterModuleProtocol) {
+    
+    required init(view: DetailCharactersViewProtocol, hero: Character, router: RouterModuleProtocol, networkService: NetworkServiceProtocol?) {
         self.view = view
-        self.hero = hero
         self.router = router
+        self.networkService = networkService
+        self.hero = hero
+        setComics()
     }
     
-    func setChar() {
-        view?.setCharacter(data: hero)
+    
+    func fetchComicsData() {
+        let heroId = "\(hero.id ?? 0)"
+        networkService?.fetchComicsData(with: heroId) { [weak self] result in
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                switch result {
+                case let .success(data):
+                    self.comics? = data
+                    print(self.comics)
+                    self.view?.success()
+                case let .failure(error):
+                    self.view?.failure(error: error)
+                }
+            }
+            
+        }
     }
+    
+    func setComics() {
+        fetchComicsData()
+    }
+    
 }
 
 

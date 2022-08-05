@@ -6,24 +6,24 @@
 //
 
 import Foundation
-// MARK: - Result
-struct Hero: Codable {
-    let id: Int
-    let name, resultDescription: String
-    let thumbnail: Thumbnail
-    let comics, series: Comics?
-    let urls: [URLElement]
-    
+
+struct Character: Decodable {
+    let id: Int?
+    var name: String?
+    let description: String?
+    let image: Thumbnail?
+    let comicsImages: [Thumbnail]?
+    let comics: Comics?
+ 
     enum CodingKeys: String, CodingKey {
-        case id, name
-        case resultDescription = "description"
-        case thumbnail, urls
-        case comics, series
+        case id, name, description
+        case comicsImages = "images"
+        case image = "thumbnail"
+        case comics
 
     }
 }
 
-// MARK: - Thumbnail
 struct Thumbnail: Codable {
     let path: String
     let thumbnailExtension: String
@@ -38,8 +38,3 @@ struct Thumbnail: Codable {
     }
 }
 
-// MARK: - URLElement
-struct URLElement: Codable {
-    let type: String
-    let url: String
-}

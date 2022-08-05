@@ -28,9 +28,6 @@ class CharactersViewController: UIViewController {
     
     var presenter: CharactersPresenterProtocol?
     
-    var filteredHero: [Hero]?
-    var heroes: [Hero]?
-    
     var isSearchBarEmpty: Bool {
         searchController.searchBar.text?.isEmpty ?? true
     }
@@ -39,7 +36,6 @@ class CharactersViewController: UIViewController {
         searchController.isActive && !isSearchBarEmpty
     }
     
-    
     //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,10 +43,6 @@ class CharactersViewController: UIViewController {
         setupView()
         setupNavigationController()
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//    }
     
     //MARK: - Settings
     private func setupView() {
@@ -62,8 +54,6 @@ class CharactersViewController: UIViewController {
     }
     
     private func setupNavigationController() {
-//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-//        navigationController?.navigationBar.shadowImage = UIImage()
         title = "Characters"
     }
 }
@@ -71,14 +61,14 @@ class CharactersViewController: UIViewController {
 //MARK: - UICollectionViewDelegate
 extension CharactersViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let hero: Hero?
+        guard var character = presenter?.characters?.data.results[indexPath.item] else { return }
         if isFiltering {
-            hero = filteredHero?[indexPath.item]
+            character = presenter?.filteredHero?[indexPath.item] ?? character
         } else {
-            hero = presenter?.marvelData?.data.results[indexPath.item]
+            character = presenter?.character ?? character
         }
+        presenter?.tapOnTheRow(character: character)
         
-        presenter?.tapOnTheRow(hero: hero)
     }
 }
 
@@ -86,24 +76,25 @@ extension CharactersViewController: UICollectionViewDelegate {
 extension CharactersViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if isFiltering {
-            return filteredHero?.count ?? 0
+            return presenter?.filteredHero?.count ?? 0
         }
-        return  presenter?.marvelData?.data.results.count ?? 0
+        return presenter?.characters?.data.results.count ?? 0
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.reuseID, for: indexPath)
                 as? CustomCollectionViewCell else { return CustomCollectionViewCell() }
         
-        var hero: Hero?
+        var hero = presenter?.character
         
         if isFiltering {
-            hero = filteredHero?[indexPath.item]
+            hero = presenter?.filteredHero?[indexPath.item]
         } else {
-            hero = heroes?[indexPath.item]
+            hero = presenter?.characters?.data.results[indexPath.item]
         }
         
-        let urlString = hero?.thumbnail.url ?? ""
+        let urlString = hero?.image?.url ?? ""
         
         cell.characterLabel.text = hero?.name
         
@@ -126,13 +117,14 @@ extension CharactersViewController: UICollectionViewDataSource {
 extension CharactersViewController: CharactersViewProtocol {
     func success() {
         charactersView?.activityIndicatorView.startAnimating()
-        charactersView?.collectionView.reloadData()
+        
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.charactersView?.blurView.isHidden = true
         }
         
         charactersView?.activityIndicatorView.stopAnimating()
-        heroes = presenter?.marvelData?.data.results
+        charactersView?.collectionView.reloadData()
     }
     
     func failure(error: NetworkError) {
@@ -157,14 +149,9 @@ extension CharactersViewController {
 extension CharactersViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
-        filterContentForSearchText(searchText: searchBar.text ?? "Spider")
+        presenter?.filterContentForSearchText(searchText: searchBar.text ?? "Spider")
+        charactersView?.collectionView.reloadData()
     }
     
-    func filterContentForSearchText(searchText: String) {
-        filteredHero = heroes?.filter {(hero: Hero) -> Bool in
-            return hero.name.lowercased().contains(searchText.lowercased())
-        }
-        charactersView?.collectionView.reloadData()
-        
-    }
+   
 }
