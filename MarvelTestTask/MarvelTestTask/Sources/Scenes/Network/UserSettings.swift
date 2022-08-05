@@ -11,8 +11,8 @@ import CryptoKit
 class  UserSettings {
     
     static let baseURL = "https://gateway.marvel.com/v1/public/"
-    static let endPoint = "characters"
-    
+    static let endPointCharacters = "characters"
+    static let endPointComics = "comics"
     static let privateKey = "6bc2d69d2ea4deeca327825bdc4b91b8a9f7f0f3"
     
     static let publicKey = "516c0059f27b0f5f8e437bcd8c950aa7"
@@ -37,7 +37,7 @@ class  UserSettings {
     static var queryItems : [String: Any] {
         return [
 //                 "offset": offset,
-                 "limit": limit,
+//                 "limit": limit,
                  "ts": tsForApi,
                  "apikey": publicKey,
                  "hash":hash]

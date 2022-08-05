@@ -10,12 +10,12 @@ import UIKit
 
 protocol AssemblyModuleProtocol {
     func createCharactersViewController(router: RouterModuleProtocol) -> UIViewController
-     func createDetailCharacterViewController(hero: Hero?, router: RouterModuleProtocol) -> UIViewController
+    func createDetailCharacterViewController(hero: Character, router: RouterModuleProtocol) -> UIViewController
 }
 
 class AssemblyModule: AssemblyModuleProtocol {
-   
-     func createCharactersViewController(router: RouterModuleProtocol) -> UIViewController {
+    
+    func createCharactersViewController(router: RouterModuleProtocol) -> UIViewController {
         let view = CharactersViewController()
         let networkService = NetworkService()
         let presenter = CharactersPresenter(view: view, networking: networkService, router: router)
@@ -23,9 +23,10 @@ class AssemblyModule: AssemblyModuleProtocol {
         return view
     }
     
-     func createDetailCharacterViewController(hero: Hero?, router: RouterModuleProtocol) -> UIViewController {
+    func createDetailCharacterViewController(hero: Character, router: RouterModuleProtocol) -> UIViewController {
         let view = DetailCharacterViewController()
-         let presenter = DetailCharactersPresenter(view: view, hero: hero, router: router)
+        let networkService = NetworkService()
+        let presenter = DetailCharactersPresenter(view: view, hero: hero, router: router, networkService: networkService)
         view.presenter = presenter
         return view
     }

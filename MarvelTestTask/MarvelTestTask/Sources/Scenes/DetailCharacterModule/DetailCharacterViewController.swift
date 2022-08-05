@@ -6,97 +6,105 @@
 //
 
 import UIKit
+//import CoreMedia
 
 class DetailCharacterViewController: UIViewController {
     
     //MARK: - Properties
-    private var detailCharacterTableView: DetailCharacterTableView? {
+    private var detailCharacterCollectionView: DetailCharacterCollectionView? {
         guard isViewLoaded else { return nil }
-        return view as? DetailCharacterTableView
+        return view as? DetailCharacterCollectionView
     }
     
     var presenter: DetailCharactersPresenterProtocol?
-    var hero: Hero?
     
     //MARK: - Life cycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setComics()
         setupView()
         setupNavigationController()
     }
     
     //MARK: - Settings
     private func setupView() {
-        view = DetailCharacterTableView()
-        presenter?.setChar()
-        detailCharacterTableView?.tableView.delegate = self
-        detailCharacterTableView?.tableView.dataSource = self        
+        view = DetailCharacterCollectionView()
+        detailCharacterCollectionView?.activityIndicatorView.startAnimating()
+        detailCharacterCollectionView?.collectionView.dataSource = self
     }
     
     private func setupNavigationController() {
-        title = hero?.name
-    }
-}
-
-
-//MARK: - UITableViewDataSource
-extension DetailCharacterViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        2
+        title = presenter?.hero.name
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ContentTableViewCell.reuseID, for: indexPath)
-                as? ContentTableViewCell else { return UITableViewCell()}
+}
+//MARK: - UICollectionViewDataSource
+
+extension DetailCharacterViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        presenter?.comics?.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ContentCollectionCell.reuseID,
+                                                            for: indexPath)
+                as? ContentCollectionCell else { return UICollectionViewCell()}
         
+
+        
+        let comics = presenter?.comics?[indexPath.item]
+        let comicsName = presenter?.hero.comics?.items?[indexPath.item].name
+        let comicsImage = comics?.image?.portraitMedium
+        cell.descriptionLabel.text = comicsName
+        cell.imageView.image = comicsImage
         return cell
-        
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: DetailCharacterHeaderView.reuseID)
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard  let mainheader = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
+                                                                            withReuseIdentifier: DetailCharacterHeaderView.reuseID,
+                                                                            for: indexPath)
                 as? DetailCharacterHeaderView else { return DetailCharacterHeaderView() }
-        header.contentView.backgroundColor = .black
-        let urlString = hero?.thumbnail.url ?? ""
-        header.nameDataLabel.text = hero?.name
-        
-            
-        header.descriptionDataLabel.text = hero?.resultDescription.description != ""
-                                        ? hero?.resultDescription.description
-                                        : "Glorious description is missing!:>"
+    
+        let characterImage = presenter?.hero.image?.largeImage
+        mainheader.nameDataLabel.text = presenter?.hero.name
+        mainheader.descriptionDataLabel.text = presenter?.hero.description != ""
+        ? presenter?.hero.description
+        : "Glorious description is missing!:>"
 
-        DispatchQueue.main.async {
-            header.imageView.download(image: urlString)
-        }
-        return header
+        mainheader.imageView.image = characterImage
+
+        return mainheader
     }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-        150
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        250
-    }
-    
+
 }
-
-//MARK: - UITableViewDelegate
-extension DetailCharacterViewController: UITableViewDelegate {
-    
-}
-
 
 //MARK: - DetailCharactersViewProtocol
-
 extension DetailCharacterViewController: DetailCharactersViewProtocol {
-    func setCharacter(data: Hero?) {
-        hero = data
+    func setComics() {
+        presenter?.setComics()
+    }
+
+    func failure(error: NetworkError) {
+        
+        let action = UIAlertAction(title: "Ok", style: .default, handler: (fetchDataAgain))
+        showAlert(title: "Error", message: error.errorDescription, actions: [action])
     }
     
+    func fetchDataAgain(action: UIAlertAction) {
+            presenter?.fetchComicsData()
+        }
+
+    
     func success() {
-        detailCharacterTableView?.tableView.reloadData()
+        
+        DispatchQueue.main.async {
+            self.detailCharacterCollectionView?.blackBlureView.isHidden = true
+        }
+        
+        detailCharacterCollectionView?.activityIndicatorView.stopAnimating()
+        detailCharacterCollectionView?.collectionView.reloadData()
     }
     
     

@@ -16,7 +16,7 @@ protocol RouterMain {
 
 protocol RouterModuleProtocol: RouterMain {
     func initialViewController()
-    func showDetailCharacterViewController(hero: Hero?)
+    func showDetailCharacterViewController(hero: Character)
     func popToRootViewController()
 }
 
@@ -40,7 +40,7 @@ class RouterModule : RouterModuleProtocol {
         }
     }
     
-    func showDetailCharacterViewController(hero: Hero?) {
+    func showDetailCharacterViewController(hero: Character) {
         if let navigationController = navigationController {
             guard let detailCharacterViewController = assemblyModule?.createDetailCharacterViewController(hero: hero, router: self) else { return }
             navigationController.pushViewController(detailCharacterViewController, animated: true)

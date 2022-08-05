@@ -10,14 +10,14 @@ import UIKit
 class ContentCollectionCell: UICollectionViewCell {
     //MARK: - properties
     static let reuseID = "ContentCollectionCell"
-    
-    //MARK: - views
 
+    //MARK: - views    
     lazy var imageView: UIImageView = {
        let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.cornerRadius = 15
+        imageView.layer.cornerRadius = 3
         imageView.contentMode = .scaleToFill
+        imageView.clipsToBounds = true
         imageView.backgroundColor = .red
         return imageView
     }()
@@ -33,6 +33,7 @@ class ContentCollectionCell: UICollectionViewCell {
         descriptionLabel.text = "Тут будет какое то описание контента, если он подгрузится"
         return descriptionLabel
     }()
+    
     
     //MARK: - Initialize
     
@@ -61,8 +62,7 @@ extension ContentCollectionCell {
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-//            imageView.widthAnchor.constraint(equalToConstant: 20),
-            imageView.heightAnchor.constraint(equalToConstant: 150),
+            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
             descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),

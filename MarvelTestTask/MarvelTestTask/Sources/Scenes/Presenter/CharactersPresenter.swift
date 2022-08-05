@@ -14,9 +14,14 @@ protocol CharactersViewProtocol: AnyObject {
 
 protocol CharactersPresenterProtocol: AnyObject {
     init(view: CharactersViewProtocol, networking: NetworkServiceProtocol, router: RouterModuleProtocol)
-    var marvelData: MarvelInfo? {get set}
+    
+    var characters: MarvelInfo? { get set }
+    var character: Character? { get set }
+    var filteredHero: [Character]? { get set }
+    
     func fetchCharactersData()
-    func tapOnTheRow(hero: Hero?)
+    func tapOnTheRow(character: Character)
+    func filterContentForSearchText(searchText: String)
 }
 
 
@@ -24,8 +29,13 @@ class CharactersPresenter: CharactersPresenterProtocol {
    
     weak var view: CharactersViewProtocol?
     let networking: NetworkServiceProtocol?
-    var marvelData: MarvelInfo?
     let router: RouterModuleProtocol?
+    
+    var characters: MarvelInfo?
+    var character: Character?
+    var filteredHero: [Character]?
+    
+    
     required init(view: CharactersViewProtocol, networking: NetworkServiceProtocol, router: RouterModuleProtocol) {
         self.view = view
         self.networking = networking
@@ -38,8 +48,8 @@ class CharactersPresenter: CharactersPresenterProtocol {
             DispatchQueue.main.async {
                 guard let self = self else {return }
                 switch result {
-                case let .success(mdata):
-                    self.marvelData = mdata
+                case let .success(data):
+                    self.characters = data
                     self.view?.success()
                 case let .failure(error):
                     self.view?.failure(error: error)
@@ -49,10 +59,15 @@ class CharactersPresenter: CharactersPresenterProtocol {
         }
     }
     
-    func tapOnTheRow(hero: Hero?) {
-        router?.showDetailCharacterViewController(hero: hero)
+    func tapOnTheRow(character: Character) {
+        router?.showDetailCharacterViewController(hero: character)
     }
     
+    func filterContentForSearchText(searchText: String) {
+        filteredHero = characters?.data.results.filter {(hero: Character) -> Bool in
+            return (hero.name?.lowercased().contains(searchText.lowercased()))!
+        }
+    }
 }
                                   
                                   
