@@ -20,39 +20,10 @@ class NetworkService: NetworkServiceProtocol {
         getData(completion: completion)
     }
 
-//    func fetchComicsData(with id: String, completion: @escaping (Result<[Character], NetworkError>) -> Void) {
-//        var url: String {
-//            "\(UserSettings.baseURL)\(UserSettings.endPointCharacters)/\(id)/\(UserSettings.endPointComics)"
-//        }
-//        print(url)
-//        let urlString = URL(string: url)
-//        guard var urlComponents = URLComponents(url: urlString!, resolvingAgainstBaseURL: true) else { return }
-//        urlComponents.queryItems = UserSettings.queryItems.map { URLQueryItem(name: $0, value: "\($1)")}
-//        print(urlComponents.url)
-//        let task = URLSession.shared.dataTask(with: urlComponents.url!) { data, response, error in
-//            guard let response = response as? HTTPURLResponse,
-//                  (200...299).contains(response.statusCode) else {
-//                completion(.failure(.serverError))
-//                print(NetworkError.serverError.localizedDescription)
-//                return
-//                }
-//            print(response)
-//            guard let data = data,
-//                  let comicsData = try? JSONDecoder().decode([Character].self, from: data) else {
-//                    completion(.failure(.badJSON))
-//                    print(NetworkError.badJSON.localizedDescription)
-//                    return
-//                }
-//            print(comicsData)
-//            completion(.success(comicsData))
-//        }
-//        task.resume()
-//    }
-    
     func fetchComicsData(with id: String, completion: @escaping (Result<[Character], NetworkError>) -> Void) {
-        
+
         var url: String { "\(UserSettings.baseURL)\(UserSettings.endPointCharacters)/\(id)/\(UserSettings.endPointComics)" }
-        
+
         AF.request(url, method: .get,
                    parameters: ["apikey": UserSettings.publicKey,
                                 "ts": UserSettings.tsForApi,
@@ -64,7 +35,6 @@ class NetworkService: NetworkServiceProtocol {
                guard let responce = responseData.response
                 else {
                    return completion(.failure(.serverError)) }
-            print(responce)
                 if responce.statusCode >= 300 {
                     completion(.failure(.badURL))
                 }
@@ -73,12 +43,10 @@ class NetworkService: NetworkServiceProtocol {
                 guard let characters = response.value?.data
                 else {
                     return completion(.failure(.badJSON)) }
-                
+
                 completion(.success(characters.results))
             }
     }
-    
-    
 }
 
 private extension NetworkService {

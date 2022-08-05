@@ -14,9 +14,25 @@ class DetailCharacterCollectionView: UIView {
         collectionView.register(ContentCollectionCell.self, forCellWithReuseIdentifier: ContentCollectionCell.reuseID)
         collectionView.register(DetailCharacterHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: DetailCharacterHeaderView.reuseID)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.showsVerticalScrollIndicator = false
         collectionView.backgroundColor = .black
         return collectionView
+    }()
+    
+    lazy var activityIndicatorView: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView(style: .medium)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.color = .systemGray
+        view.hidesWhenStopped = true
+        return view
+    }()
+    
+    lazy var blackBlureView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .black
+        view.isHidden = false
+        return view
     }()
     
     //MARK: - Initialize
@@ -36,6 +52,8 @@ extension DetailCharacterCollectionView {
     //MARK: - Setup methods
     private func setupHierarchy() {
         addSubview(collectionView)
+        addSubview(blackBlureView)
+        addSubview(activityIndicatorView)
     }
     
     private func setupLayout() {
@@ -43,29 +61,36 @@ extension DetailCharacterCollectionView {
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.topAnchor.constraint(equalTo: topAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            blackBlureView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            blackBlureView.topAnchor.constraint(equalTo: topAnchor),
+            blackBlureView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            blackBlureView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            activityIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            activityIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
     
     private func setupCompositionalLayout() -> UICollectionViewLayout {
-        let spacing: CGFloat = 5
         
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(150))
-        let headerElement = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
-        headerElement.pinToVisibleBounds = true
+        let mainHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.4))
         
+        let mainHeaderElement = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: mainHeaderSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        mainHeaderElement.pinToVisibleBounds = true
         
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 5, bottom: 0, trailing: 10)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(0.1))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(0.4))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: 1)
-        let section = NSCollectionLayoutSection(group: group)
         
-        section.orthogonalScrollingBehavior = .groupPaging
-        section.interGroupSpacing = spacing
-        section.boundarySupplementaryItems = [headerElement]
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
+        section.boundarySupplementaryItems = [mainHeaderElement]
+        
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }

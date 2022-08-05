@@ -94,20 +94,13 @@ extension CharactersViewController: UICollectionViewDataSource {
             hero = presenter?.characters?.data.results[indexPath.item]
         }
         
-        let urlString = hero?.image?.url ?? ""
+        let heroImage = hero?.image?.largeImage
         
         cell.characterLabel.text = hero?.name
         
         cell.activityIndicatorView.startAnimating()
-        if urlString == "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg" {
-            cell.imageView.image = UIImage(named: "tony")
-            cell.activityIndicatorView.stopAnimating()
-        } else {
-            DispatchQueue.main.async {
-                cell.imageView.download(image: urlString)
-                cell.activityIndicatorView.stopAnimating()
-            }
-        }
+        cell.imageView.image = heroImage
+        cell.activityIndicatorView.stopAnimating()
         
         return cell
     }
@@ -118,9 +111,8 @@ extension CharactersViewController: CharactersViewProtocol {
     func success() {
         charactersView?.activityIndicatorView.startAnimating()
         
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.charactersView?.blurView.isHidden = true
+        DispatchQueue.main.async {
+            self.charactersView?.blackBlureView.isHidden = true
         }
         
         charactersView?.activityIndicatorView.stopAnimating()
@@ -135,7 +127,7 @@ extension CharactersViewController: CharactersViewProtocol {
 //MARK: - Alert Controller
 extension CharactersViewController {
     func showError(error: NetworkError) {
-        charactersView?.blurView.isHidden = false
+        charactersView?.blackBlureView.isHidden = false
         let action = UIAlertAction(title: "okey:<", style: .default, handler: (repeatedRequest))
         showAlert(title: "Whats the hell????", message: error.errorDescription, actions: [action])
     }

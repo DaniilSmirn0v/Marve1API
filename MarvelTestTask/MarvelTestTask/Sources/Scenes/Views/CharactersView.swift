@@ -28,10 +28,10 @@ class CharactersView: UIView {
         return view
     }()
     
-    lazy var blurView: UIVisualEffectView = {
-        let blurEffect = UIBlurEffect(style: .dark)
-        let view = UIVisualEffectView(effect: blurEffect)
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+    lazy var blackBlureView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .black
         view.isHidden = false
         return view
     }()
@@ -70,7 +70,7 @@ extension CharactersView {
     
     private func setupHierarchy() {
         addSubview(collectionView)
-        addSubview(blurView)
+        addSubview(blackBlureView)
         addSubview(activityIndicatorView)
     }
     
@@ -81,10 +81,10 @@ extension CharactersView {
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
             
-            blurView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            blurView.topAnchor.constraint(equalTo: topAnchor),
-            blurView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            blurView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            blackBlureView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            blackBlureView.topAnchor.constraint(equalTo: topAnchor),
+            blackBlureView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            blackBlureView.bottomAnchor.constraint(equalTo: bottomAnchor),
             
             activityIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
             activityIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor)

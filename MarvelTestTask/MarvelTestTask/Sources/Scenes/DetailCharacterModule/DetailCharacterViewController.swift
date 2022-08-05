@@ -18,7 +18,6 @@ class DetailCharacterViewController: UIViewController {
     
     var presenter: DetailCharactersPresenterProtocol?
     
-    
     //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,76 +29,63 @@ class DetailCharacterViewController: UIViewController {
     //MARK: - Settings
     private func setupView() {
         view = DetailCharacterCollectionView()
-        detailCharacterCollectionView?.collectionView.delegate = self
+        detailCharacterCollectionView?.activityIndicatorView.startAnimating()
         detailCharacterCollectionView?.collectionView.dataSource = self
     }
     
     private func setupNavigationController() {
         title = presenter?.hero.name
     }
+    
 }
 //MARK: - UICollectionViewDataSource
 
 extension DetailCharacterViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        presenter?.hero.comics?.items?.count ?? 1
+        presenter?.comics?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ContentCollectionCell.reuseID,
                                                             for: indexPath)
                 as? ContentCollectionCell else { return UICollectionViewCell()}
-        let comics = presenter?.comics
-        print(comics)
-//        cell.descriptionLabel.text = comics?.name
-       
-       
+        
+
+        
+        let comics = presenter?.comics?[indexPath.item]
+        let comicsName = presenter?.hero.comics?.items?[indexPath.item].name
+        let comicsImage = comics?.image?.portraitMedium
+        cell.descriptionLabel.text = comicsName
+        cell.imageView.image = comicsImage
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard  let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
+        guard  let mainheader = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
                                                                             withReuseIdentifier: DetailCharacterHeaderView.reuseID,
                                                                             for: indexPath)
                 as? DetailCharacterHeaderView else { return DetailCharacterHeaderView() }
     
-        guard let urlString = presenter?.hero.image?.url else { return UICollectionReusableView()}
-        header.nameDataLabel.text = presenter?.hero.name
-
-        header.descriptionDataLabel.text = presenter?.hero.description != ""
+        let characterImage = presenter?.hero.image?.largeImage
+        mainheader.nameDataLabel.text = presenter?.hero.name
+        mainheader.descriptionDataLabel.text = presenter?.hero.description != ""
         ? presenter?.hero.description
         : "Glorious description is missing!:>"
 
-        if urlString == "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg" {
-            header.imageView.image = UIImage(named: "tony")
-        } else {
-            DispatchQueue.main.async {
-                header.imageView.download(image: urlString)
-            }
-        }
+        mainheader.imageView.image = characterImage
 
-        return header
+        return mainheader
     }
 
-}
-
-//MARK: - UICollectionViewDelegate
-
-extension DetailCharacterViewController: UICollectionViewDelegate {
-    
 }
 
 //MARK: - DetailCharactersViewProtocol
-
 extension DetailCharacterViewController: DetailCharactersViewProtocol {
     func setComics() {
         presenter?.setComics()
-        
     }
-    
 
-    
     func failure(error: NetworkError) {
         
         let action = UIAlertAction(title: "Ok", style: .default, handler: (fetchDataAgain))
@@ -112,6 +98,12 @@ extension DetailCharacterViewController: DetailCharactersViewProtocol {
 
     
     func success() {
+        
+        DispatchQueue.main.async {
+            self.detailCharacterCollectionView?.blackBlureView.isHidden = true
+        }
+        
+        detailCharacterCollectionView?.activityIndicatorView.stopAnimating()
         detailCharacterCollectionView?.collectionView.reloadData()
     }
     

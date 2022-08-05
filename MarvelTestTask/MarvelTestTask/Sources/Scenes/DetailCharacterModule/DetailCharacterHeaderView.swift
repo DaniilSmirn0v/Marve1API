@@ -15,7 +15,7 @@ class DetailCharacterHeaderView: UICollectionReusableView {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = 10
+        stackView.spacing = 5
         stackView.distribution = .fill
         stackView.backgroundColor = .black
         return stackView
@@ -41,7 +41,6 @@ class DetailCharacterHeaderView: UICollectionReusableView {
     
     lazy var nameDataLabel: UILabel = {
         let label = UILabel()
-        label.text = "Random Name"
         label.font = .systemFont(ofSize: 15, weight: .regular)
         label.textColor = .systemGray
         label.textAlignment = .left
@@ -59,11 +58,20 @@ class DetailCharacterHeaderView: UICollectionReusableView {
     
     lazy var descriptionDataLabel: UILabel = {
         let label = UILabel()
-        label.text = "ОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекстаОченьМногоТекста"
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.font = .systemFont(ofSize: 15, weight: .regular)
         label.textColor = .systemGray
+        label.textAlignment = .left
+        return label
+    }()
+    
+    lazy var contentTypeLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Comics"
+        label.font = .systemFont(ofSize: 17, weight: .regular)
+        label.numberOfLines = 0
+        label.textColor = .red
         label.textAlignment = .left
         return label
     }()
@@ -79,7 +87,6 @@ class DetailCharacterHeaderView: UICollectionReusableView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
 
 extension DetailCharacterHeaderView {
@@ -92,6 +99,7 @@ extension DetailCharacterHeaderView {
         verticalStackView.addArrangedSubview(nameDataLabel)
         verticalStackView.addArrangedSubview(descriptionTitleLabel)
         verticalStackView.addArrangedSubview(descriptionDataLabel)
+        verticalStackView.addArrangedSubview(contentTypeLabel)
     }
     
     private func setupLayout() {
@@ -99,12 +107,11 @@ extension DetailCharacterHeaderView {
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             imageView.topAnchor.constraint(equalTo: topAnchor),
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            imageView.heightAnchor.constraint(equalToConstant: 200),
+            imageView.heightAnchor.constraint(equalToConstant: 170),
             
+            verticalStackView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 5),
             verticalStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            verticalStackView.topAnchor.constraint(equalTo: imageView.bottomAnchor),
             verticalStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            verticalStackView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     

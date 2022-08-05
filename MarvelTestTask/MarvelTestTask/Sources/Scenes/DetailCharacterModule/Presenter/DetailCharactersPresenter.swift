@@ -28,7 +28,7 @@ class DetailCharactersPresenter: DetailCharactersPresenterProtocol {
     weak var view: DetailCharactersViewProtocol?
     var networkService: NetworkServiceProtocol?
     var hero: Character
-    var comics: [Character]?
+    var comics: [Character]? = []
     let router: RouterModuleProtocol?
     
     required init(view: DetailCharactersViewProtocol, hero: Character, router: RouterModuleProtocol, networkService: NetworkServiceProtocol?) {
@@ -36,8 +36,7 @@ class DetailCharactersPresenter: DetailCharactersPresenterProtocol {
         self.router = router
         self.networkService = networkService
         self.hero = hero
-        setComics()
-    }
+     }
     
     
     func fetchComicsData() {
@@ -48,7 +47,6 @@ class DetailCharactersPresenter: DetailCharactersPresenterProtocol {
                 switch result {
                 case let .success(data):
                     self.comics? = data
-                    print(self.comics)
                     self.view?.success()
                 case let .failure(error):
                     self.view?.failure(error: error)

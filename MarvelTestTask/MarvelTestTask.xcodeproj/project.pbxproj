@@ -23,8 +23,6 @@
 		A575FC1928972206006245F5 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC1828972206006245F5 /* NetworkService.swift */; };
 		A575FC1C2897289D006245F5 /* URL extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC1B2897289D006245F5 /* URL extension.swift */; };
 		A575FC1F2897DCBA006245F5 /* AssemblyModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC1E2897DCBA006245F5 /* AssemblyModule.swift */; };
-		A575FC27289816C4006245F5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A575FC26289816C4006245F5 /* Kingfisher */; };
-		A575FC29289816E1006245F5 /* UIImageView extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC28289816E1006245F5 /* UIImageView extension.swift */; };
 		A575FC2B28983612006245F5 /* DetailCharactersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC2A28983611006245F5 /* DetailCharactersPresenter.swift */; };
 		A575FC3A28986321006245F5 /* MarvelInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC3928986321006245F5 /* MarvelInfo.swift */; };
 		A575FC3E2898633C006245F5 /* Comics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575FC3D2898633C006245F5 /* Comics.swift */; };
@@ -33,6 +31,7 @@
 		A5F61D6A2899D066005FE5CC /* AlertController extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F61D692899D066005FE5CC /* AlertController extension.swift */; };
 		A5F61D6C289AF22E005FE5CC /* DetailCharacterCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F61D6B289AF22E005FE5CC /* DetailCharacterCollectionView.swift */; };
 		A5F61D6E289BE72B005FE5CC /* Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F61D6D289BE72B005FE5CC /* Characters.swift */; };
+		A5F61D70289D2DD5005FE5CC /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F61D6F289D2DD5005FE5CC /* Thumbnail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,7 +53,6 @@
 		A575FC1828972206006245F5 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		A575FC1B2897289D006245F5 /* URL extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL extension.swift"; sourceTree = "<group>"; };
 		A575FC1E2897DCBA006245F5 /* AssemblyModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyModule.swift; sourceTree = "<group>"; };
-		A575FC28289816E1006245F5 /* UIImageView extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView extension.swift"; sourceTree = "<group>"; };
 		A575FC2A28983611006245F5 /* DetailCharactersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCharactersPresenter.swift; sourceTree = "<group>"; };
 		A575FC3928986321006245F5 /* MarvelInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelInfo.swift; sourceTree = "<group>"; };
 		A575FC3D2898633C006245F5 /* Comics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comics.swift; sourceTree = "<group>"; };
@@ -63,6 +61,7 @@
 		A5F61D692899D066005FE5CC /* AlertController extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertController extension.swift"; sourceTree = "<group>"; };
 		A5F61D6B289AF22E005FE5CC /* DetailCharacterCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCharacterCollectionView.swift; sourceTree = "<group>"; };
 		A5F61D6D289BE72B005FE5CC /* Characters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Characters.swift; sourceTree = "<group>"; };
+		A5F61D6F289D2DD5005FE5CC /* Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
 		DBF1352B06E4591C4E855AE4 /* Pods-MarvelTestTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelTestTask.debug.xcconfig"; path = "Target Support Files/Pods-MarvelTestTask/Pods-MarvelTestTask.debug.xcconfig"; sourceTree = "<group>"; };
 		E9DFDC2CC3B3B025D9C04848 /* Pods_MarvelTestTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelTestTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -72,7 +71,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A575FC27289816C4006245F5 /* Kingfisher in Frameworks */,
 				99523FB0A5F34568355DD74E /* Pods_MarvelTestTask.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -94,7 +92,6 @@
 				DBF1352B06E4591C4E855AE4 /* Pods-MarvelTestTask.debug.xcconfig */,
 				5D680982A41589325D692A3D /* Pods-MarvelTestTask.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -275,7 +272,6 @@
 			isa = PBXGroup;
 			children = (
 				A575FC1B2897289D006245F5 /* URL extension.swift */,
-				A575FC28289816E1006245F5 /* UIImageView extension.swift */,
 				A5F61D692899D066005FE5CC /* AlertController extension.swift */,
 			);
 			name = Extensions;
@@ -305,6 +301,7 @@
 				A575FC3928986321006245F5 /* MarvelInfo.swift */,
 				A5F61D6D289BE72B005FE5CC /* Characters.swift */,
 				A575FC4128986350006245F5 /* Character.swift */,
+				A5F61D6F289D2DD5005FE5CC /* Thumbnail.swift */,
 				A575FC3D2898633C006245F5 /* Comics.swift */,
 			);
 			path = MarvelModel;
@@ -337,7 +334,6 @@
 			);
 			name = MarvelTestTask;
 			packageProductDependencies = (
-				A575FC26289816C4006245F5 /* Kingfisher */,
 			);
 			productName = MarvelTestTask;
 			productReference = A575FBD528943A50006245F5 /* MarvelTestTask.app */;
@@ -368,7 +364,6 @@
 			);
 			mainGroup = A575FBCC28943A50006245F5;
 			packageReferences = (
-				A575FC25289816C4006245F5 /* XCRemoteSwiftPackageReference "Kingfisher.git" */,
 			);
 			productRefGroup = A575FBD628943A50006245F5 /* Products */;
 			projectDirPath = "";
@@ -444,7 +439,6 @@
 				A5F61D6E289BE72B005FE5CC /* Characters.swift in Sources */,
 				A575FC02289475F4006245F5 /* DetailCharacterViewController.swift in Sources */,
 				A575FC042894762C006245F5 /* DetailCharacterHeaderView.swift in Sources */,
-				A575FC29289816E1006245F5 /* UIImageView extension.swift in Sources */,
 				A575FC3E2898633C006245F5 /* Comics.swift in Sources */,
 				A575FC1928972206006245F5 /* NetworkService.swift in Sources */,
 				A575FC3A28986321006245F5 /* MarvelInfo.swift in Sources */,
@@ -456,6 +450,7 @@
 				A575FBFA289458F1006245F5 /* CharactersView.swift in Sources */,
 				A575FC4228986350006245F5 /* Character.swift in Sources */,
 				A575FC1F2897DCBA006245F5 /* AssemblyModule.swift in Sources */,
+				A5F61D70289D2DD5005FE5CC /* Thumbnail.swift in Sources */,
 				A575FC1C2897289D006245F5 /* URL extension.swift in Sources */,
 				A575FC1728971E68006245F5 /* NetworkError.swift in Sources */,
 				A575FBFC28946020006245F5 /* CustomCollectionViewCell.swift in Sources */,
@@ -667,25 +662,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		A575FC25289816C4006245F5 /* XCRemoteSwiftPackageReference "Kingfisher.git" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		A575FC26289816C4006245F5 /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A575FC25289816C4006245F5 /* XCRemoteSwiftPackageReference "Kingfisher.git" */;
-			productName = Kingfisher;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A575FBCD28943A50006245F5 /* Project object */;
 }
